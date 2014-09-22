@@ -9,7 +9,7 @@ var ProjectList = function (config) {
         dataType: 'text',
         cache: false, // Chrome && Internet Explorer has aggressive caching policies.
         success: function (text) {
-            MediaThread.templates[config.template] = Mustache.template(config.template, text);
+            MediaThread.templates[config.template] = text;
             self.refresh(config);
         }
     });
@@ -129,7 +129,7 @@ ProjectList.prototype.getSpaceUrl = function (active_tag, active_modified) {
 ProjectList.prototype.updateSwitcher = function () {
     var self = this;
     self.switcher_context.display_switcher_extras = !self.switcher_context.showing_my_items;
-    Mustache.update("switcher_collection_chooser", self.switcher_context, { parent: self.parent });
+    //Mustache.update("switcher_collection_chooser", self.switcher_context, { parent: self.parent });
     
     // hook up switcher choice owner behavior
     jQuery(self.parent).find("a.switcher-choice.owner").unbind('click').click(function (evt) {
@@ -174,7 +174,7 @@ ProjectList.prototype.update = function (the_records) {
         the_records.active_filter_count = n;
     }
     
-    Mustache.update(self.template_label, the_records, {
+    /*Mustache.update(self.template_label, the_records, {
         parent: self.parent,
         pre: function (elt) { jQuery(elt).hide(); },
         post: function (elt) {
@@ -182,6 +182,6 @@ ProjectList.prototype.update = function (the_records) {
             
             jQuery(elt).fadeIn("slow");
         }
-    });
+    });*/
 };
     

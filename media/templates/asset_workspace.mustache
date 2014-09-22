@@ -25,13 +25,13 @@
                         
                             <div class="asset-view-header">
                                 <h2>Item
-                                {{#>>asset-view-header}}
+                                {{#asset-view-header}}
                                     <span class="asset-view-title">
                                         {{#asset-current}}
                                              {{title}}
                                         {{/asset-current}}
                                      </span>
-                                {{/>>asset-view-header}}
+                                {{/asset-view-header}}
                                 </h2>
                             </div>
                         </td>
@@ -68,7 +68,7 @@
                                 </div>
                                 
                                 <div class="tabs asset-view-tabs" style="display: none">
-                                    {{#>>asset-view-help}}
+                                    {{#asset-view-help}}
                                     <div id="asset-view-help">
                                     <div id="asset-view-overlay" class="ui-widget-overlay ui-widget-overlay-dark" {{^show_help}}style="display: none"{{/show_help}}></div>
     
@@ -107,7 +107,7 @@
                                         </div>
                                     </div>
                                     </div>
-                                    {{/>>asset-view-help}}
+                                    {{/asset-view-help}}
                                     
                                     <ul>
                                         <li><a href="#tabs-1">Item</a></li>
@@ -116,9 +116,9 @@
                                     </ul>
                                     
                                     <div id="tabs-1">
-                                        {{#>>asset-view-details}}                                    
+                                        {{#asset-view-details}}                                    
                                         <div id="asset-view-details" class="asset-view-details">
-                                            {{#>>asset-global-annotation}}
+                                            {{#asset-global-annotation}}
                                             <div id="asset-global-annotation"
                                                 {{#annotation.editing}}
                                                     style="display: none"
@@ -268,9 +268,9 @@
                                                     <div class="visualclear"></div>
                                                 </form>
                                             </div>
-                                            {{/>>asset-global-annotation}}
+                                            {{/asset-global-annotation}}
                                             
-                                            {{#>>annotation-current}}
+                                            {{#annotation-current}}
                                                 <div id="annotation-current">
                                                     <div id="asset-details-annotations-current"
                                                         {{#annotation.editing}}
@@ -373,8 +373,8 @@
                                                         </form>
                                                     </div>                                                    
                                                 </div>
-                                            {{/>>annotation-current}}                                                        
-                                        
+                                            {{/annotation-current}}
+
                                             <div id="annotations-organized-container">
                                                 <div id="annotations-organized"
                                                     {{#annotation.editing}}
@@ -444,7 +444,7 @@
                                                         {{/annotations}}
                                                     {{/asset-current}}
                                                   
-                                                    {{#>>annotation-list}}
+                                                    {{#annotation-list}}
                                                     <ul id="asset-details-annotations-list">
                                                         {{#annotation_list}}
                                                         <li class="annotation-group">
@@ -452,7 +452,7 @@
                                                            <h4><div class="color-box" style="background-color:{{color}}"></div>{{title}}</h4>
                                                              <div class="accordion">
                                                                  {{#annotations}}
-                                                                     {{#>>annotation-listitem}}
+                                                                     {{#annotation-listitem}}
                                                                          <h3 id="accordion-{{id}}" data-id="{{id}}">
                                                                              <a href="#">
                                                                                 {{^metadata.title}}
@@ -515,23 +515,23 @@
                                                                                 </div>
                                                                             </div>
                                                                          </div>
-                                                                     {{/>>annotation-listitem}}
+                                                                     {{/annotation-listitem}}
                                                                  {{/annotations}}
                                                              </div> 
                                                           {{/category}}
                                                         </li>
                                                         {{/annotation_list}}
                                                     </ul>
-                                                    {{/>>annotation-list}}
+                                                    {{/annotation-list}}
                                                 </div>
                                             </div>
                                         </div> 
-                                        {{/>>asset-view-details}}
+                                        {{/asset-view-details}}
                                     </div>
                                     
                                     
                                     <div id="tabs-2" class="ui-tab-asset-sources">
-                                        {{#>>asset-sources}}
+                                        {{#asset-sources}}
                                             <div id="asset-sources">
                                                 <h2>Sources</h2>
                                                 {{#asset-current}}
@@ -564,12 +564,12 @@
                                                 {{/asset-current}}
                                             </div>
                                             
-                                        {{/>>asset-sources}}
+                                        {{/asset-sources}}
                                         <br />                           
                                     </div>
                                     
                                     <div id="tabs-3" class="ui-tab-asset-references">
-                                        {{#>>asset-references}}
+                                        {{#asset-references}}
                                             <div id="asset-references">
                                                 {{#tags}}
                                                     <h2>Tags</h2>
@@ -621,7 +621,7 @@
                                                     </ul>
                                                 {{/references}}
                                             </div>
-                                        {{/>>asset-references}}
+                                        {{/asset-references}}
                                     </div> {{! end tabs-3 references }}
                                     
                                 </div> {{! end tabs }}

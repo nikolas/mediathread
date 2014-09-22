@@ -1,8 +1,8 @@
-{{#>>classwork_table}}
+{{#classwork_table}}
 <div id="classwork_table">
     <div>      
         <div class="filter-widget left">
-            {{#>>switcher_collection_chooser}}
+            {{#switcher_collection_chooser}}
             <div class="switcher_collection_chooser switcher collection-chooser" tabindex="1">            
                 <a class="switcher-top menuclosed" onclick="return switcher(event, this);">
                     <span class="switcher-prefix">Author </span>
@@ -28,7 +28,7 @@
                     {{/owners}}
                 </ul>
             </div>
-            {{/>>switcher_collection_chooser}}        
+            {{/switcher_collection_chooser}}        
         </div> {{! end filter widget }}
         
         <a href="#" onclick='jQuery("#create-project-menu").toggle();' class="btn-primary create right">
@@ -74,7 +74,7 @@
             <td id="projects">
                 <div class="column-container projects-column-container" style="padding-bottom: 8px;">
                     <div class="column-contents">
-                        {{#>>projects}}
+                        {{#projects}}
                         <div id="project_table">
                             {{^compositions}}
                                 {{^showing_my_items}}                            
@@ -222,7 +222,7 @@
                                 </ul>    
                             {{/compositions}}
                            </div>
-                        {{/>>projects}}
+                        {{/projects}}
                     </div>
 
                 </div>
@@ -233,4 +233,4 @@
 </table>
 <div id="loaded"></div>
 </div>
-{{/>>classwork_table}}
+{{/classwork_table}}

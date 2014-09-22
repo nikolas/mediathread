@@ -3,13 +3,13 @@
             <table class="panel-subcontainer">
                 <tr class="asset-workspace-content-row">                    
                     <td class="panel-container open asset subpanel fixed" style="display: block">
-                        {{#>>asset-view-header}}
+                        {{#asset-view-header}}
                             <div id="asset-view-header">
                                 {{#asset-current}}
                                      <div class="asset-view-title"><h3>{{title}}</h3></div>
                                 {{/asset-current}}                             
                              </div>
-                        {{/>>asset-view-header}}
+                        {{/asset-view-header}}
                         
                         <div class="asset-view-container">
                             <div class="asset-view-published asset-view-dialog">
@@ -20,7 +20,7 @@
                                 </div>
                             </div>
 
-                            {{#>>asset-view-details}}
+                            {{#asset-view-details}}
                             <div class="asset-view-tabs">
                             <div id="asset-view-details" class="asset-view-details">
                                 <div id="asset-global-annotation"
@@ -90,10 +90,9 @@
                                     
                                 </div> {{! end global annotation }}
                                 
-                                {{#>>annotation-current}}
+                                {{#annotation-current}}
                                     <div id="annotation-current">
                                         <div id="asset-details-annotations-current"
-                                            
                                             {{#annotation.editing}}
                                                 style="display: block"
                                             {{/annotation.editing}}
@@ -187,9 +186,9 @@
                                             </form>
                                         </div>
                                     </div>
-                                {{/>>annotation-current}}  
-                                </div></div>                                                
-                            {{/>>asset-view-details}}
+                                {{/annotation-current}}
+                                </div></div>
+                            {{/asset-view-details}}
                         </div> {{! end asset-view-container }}
                     </td>
                 </tr>

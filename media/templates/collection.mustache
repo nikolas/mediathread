@@ -1,9 +1,9 @@
-{{#>>collection_table}}
+{{#collection_table}}
 <div class="collection_table">
     <div class="media-column" >
         <div class="filter-widget">
             <h3>FILTER BY...</h3>
-            {{#>>switcher_collection_chooser}}
+            {{#switcher_collection_chooser}}
             <div class="switcher_collection_chooser switcher collection-chooser" tabindex="1">                
                 <a class="switcher-top menuclosed" onclick="return switcher(event, this);">
                     <span class="switcher-prefix">Owner</span>                
@@ -36,7 +36,7 @@
                     {{/owners}}
                 </ul>
             </div>
-            {{/>>switcher_collection_chooser}}
+            {{/switcher_collection_chooser}}
             
             <div class="switcher collection-date-filter">
                 <a class="switcher-top menuclosed" onclick="return switcher(event, this);">
@@ -86,7 +86,6 @@
 
             
         <div class="collection-assets scroll annotation-embedding">
-            {{#>>assets}}
             <div id="asset_table" class="asset-table">
                 {{^assets}}
                     <div class="default-content intro-text feature-help"">
@@ -326,7 +325,6 @@
                 {{/assets}}
                   
             </div>
-        {{/>>assets}}
     </div>
 </div>
-{{/>>collection_table}}
+{{/collection_table}}

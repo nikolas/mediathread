@@ -82,7 +82,7 @@
                                         <input class="{{context.project.type}} project project-revisionbutton" 
                                             type="button" value="Revisions" />
                                         
-                                            {{#>>revisions}}
+                                            {{#revisions}}
                                             <div class="revision-list" style="display: none" title="Revisions">
                                                 <div>Select a revision, then click "View". The revision view will open in a separate window.</div>
                                                     
@@ -92,7 +92,7 @@
                                                     {{/context.revisions}}
                                                 </select> 
                                             </div>  
-                                            {{/>>revisions}}
+                                            {{/revisions}}
                                             
                                     {{/context.can_edit}}
                                     

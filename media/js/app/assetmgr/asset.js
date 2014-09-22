@@ -283,9 +283,8 @@
             for (var k = 0; k < context.annotation_list.length; k++) {
                 context.annotation_list[k] = { 'category': cats[context.annotation_list[k]] };
             }
-            
-            
-            Mustache.update('annotation-list', context, {
+
+            /*Mustache.update('annotation-list', context, {
                 pre: function (elt) {
                     jQuery(elt).hide();
                     jQuery("div.accordion").accordion("destroy");
@@ -319,7 +318,7 @@
                     // behavior on initial activation
                     jQuery("div.accordion").accordion({ 'changestart': self.showAnnotation });
                 }
-            });
+            });*/
         };
         
         this.resetHighlightLayer = function () {
@@ -553,9 +552,9 @@
                             'vocabulary': self.vocabulary
                         };
                         
-                        Mustache.update("asset-view-header", context);
+                        //Mustache.update("asset-view-header", context);
                          
-                        Mustache.update("asset-global-annotation", context, {
+                        /*Mustache.update("asset-global-annotation", context, {
                             pre: function (elt) { jQuery(elt).hide(); },
                             post: function (elt) {
                                 jQuery(elt).fadeIn("slow", function () {
@@ -570,7 +569,7 @@
                                     });                                    
                                 });
                             }
-                        });
+                        });*/
                     });
                 }
             });

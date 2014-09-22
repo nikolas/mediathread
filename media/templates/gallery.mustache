@@ -1,4 +1,4 @@
-{{#>>media_gallery}}
+{{#media_gallery}}
 <div class="media_gallery">
     <div class="media-column">
         <div id="collection-overlay" class="ui-widget-overlay help-overlay" style="display: none"></div>
@@ -60,7 +60,7 @@
         <div class="filter-widget">
             <h3>FILTER BY...</h3>    
         
-            {{#>>switcher_collection_chooser}}
+            {{#switcher_collection_chooser}}
             <div class="switcher_collection_chooser switcher collection-chooser">                
                 <a class="switcher-top menuclosed" onclick="return switcher(event, this);">
                     <span class="switcher-prefix">Owner </span>
@@ -92,7 +92,7 @@
                     {{/owners}}                        
                 </ul>
             </div>
-            {{/>>switcher_collection_chooser}}
+            {{/switcher_collection_chooser}}
             
             <div class="switcher collection-date-filter">
                 <a class="switcher-top menuclosed" onclick="return switcher(event, this);">
@@ -142,7 +142,6 @@
         </div> {{! end filter widget }}
             
         <div class="collection-assets scroll annotation-embedding">
-            {{#>>assets}}
             <div id="asset_table" class="asset-table">
                 {{^assets}}
                     <div class="default-content feature-help">
@@ -264,10 +263,8 @@
                         </div>
                     </div>
                 {{/assets}}
-                  
             </div>
-        {{/>>assets}}
     </div>
     <div id="loaded"></div>    
 </div>
-{{/>>media_gallery}}
+{{/media_gallery}}

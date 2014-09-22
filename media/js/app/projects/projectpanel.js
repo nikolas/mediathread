@@ -755,7 +755,8 @@ ProjectPanelHandler.prototype.updateRevisions = function() {
         dataType: 'json',
         error: function () {},
         success: function (json, textStatus, xhr) {
-            Mustache.update("revisions", {'context': json});
+            console.log('revisions', json);
+            //Mustache.update("revisions", {'context': json});
         }
     });            
     
