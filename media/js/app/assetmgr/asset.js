@@ -649,7 +649,21 @@
                 .fadeOut()
                 .promise()
                 .done(function () {
-                    Mustache.update('annotation-current', context, { post: function (elt) {
+                    djangosherd.assetview.clipform.html.push('clipform-display', {
+                        asset : {}
+                    });
+                    
+                    // Preserve zoom level on 'new selection'
+                    //djangosherd.assetview.setState({});
+                    // Let's see if just not setting state will work.
+                    djangosherd.assetview.clipform.setState({ 'start': 0, 'end': 0 }, { 'mode': 'create' });
+                    
+                    self._initTags();
+                    self._initReferences();
+                    jQuery("select.vocabulary").select2({});
+                    jQuery("#asset-details-annotations-current").fadeIn();
+                    jQuery(window).trigger("resize");
+                    /*Mustache.update('annotation-current', context, { post: function (elt) {
                         djangosherd.assetview.clipform.html.push('clipform-display', {
                             asset : {}
                         });
@@ -664,7 +678,7 @@
                         jQuery("select.vocabulary").select2({});
                         jQuery("#asset-details-annotations-current").fadeIn();
                         jQuery(window).trigger("resize");
-                    }});
+                    }});*/
             });
         };
         
@@ -948,8 +962,10 @@
                 context.show_help = self.user_settings.help_item_detail_view;
             }
             context.show_help_checked = !self.user_settings.help_item_detail_view;
-            
-            Mustache.update(template_label, context, {
+
+            jQuery('#sliding-content-row').html(
+                Mustache.render(MediaThread.templates['asset_workspace']));
+            /*Mustache.update(template_label, context, {
                 pre: function (elt) { jQuery(elt).hide(); },
                 post: function (elt) {
                     var i;
@@ -999,7 +1015,7 @@
                         }
                     });
                 }
-            });
+            });*/
         };
     })();
 })();

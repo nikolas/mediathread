@@ -435,9 +435,11 @@ CollectionList.prototype.updateSwitcher = function () {
     self.switcher_context.display_switcher_extras = !self.switcher_context.showing_my_items;
     console.log('update switcher_collection_chooser', self.switcher_context, self.parent);
     jQuery(self.parent).html(
-        Mustache.render(MediaThread.templates['gallery'],
-            self.switcher_context)
-        );
+        Mustache.render(
+            MediaThread.templates['gallery'],
+            self.switcher_context
+        )
+    );
     //jQuery(self.parent).html('<h1>abc</h1>');
     //Mustache.update("switcher_collection_chooser", self.switcher_context, { parent: self.parent });
     
