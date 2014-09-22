@@ -190,14 +190,16 @@ CollectionList.prototype.refresh = function (config) {
     self.limits.offset = 0;
     var url = self.constructUrl(config, false);
 
-    djangosherd.storage.get({
-        type: 'asset',
-        url: url
-    },
-    false,
-    function (the_records) {
-        self.updateAssets(the_records);
-    });
+    djangosherd.storage.get(
+        {
+            type: 'asset',
+            url: url
+        },
+        false,
+        function (the_records) {
+            self.updateAssets(the_records);
+        }
+    );
 };
 
 CollectionList.prototype.appendItems = function (config) {
@@ -431,7 +433,12 @@ CollectionList.prototype.createThumbs = function (assets) {
 CollectionList.prototype.updateSwitcher = function () {
     var self = this;
     self.switcher_context.display_switcher_extras = !self.switcher_context.showing_my_items;
-    console.log('update switcher_collection_chooser', self.switcher_context);
+    console.log('update switcher_collection_chooser', self.switcher_context, self.parent);
+    jQuery(self.parent).html(
+        Mustache.render(MediaThread.templates['gallery'],
+            self.switcher_context)
+        );
+    //jQuery(self.parent).html('<h1>abc</h1>');
     //Mustache.update("switcher_collection_chooser", self.switcher_context, { parent: self.parent });
     
     // hook up switcher choice owner behavior
@@ -508,6 +515,52 @@ CollectionList.prototype.updateAssets = function (the_records) {
         the_records.active_filter_count = n;
     }
 
+    var elt = self.parent;
+    jQuery(elt).hide();
+    if (self.create_annotation_thumbs) {
+        self.createThumbs(the_records.assets);
+    } else if (self.create_asset_thumbs) {
+        self.createAssetThumbs(the_records.assets);
+    }
+    
+    self.updateSwitcher();
+    
+    if (self.current_asset === null) {
+        // handles the maximized view
+        jQuery(window).scroll(function () { 
+            if (!self.loading &&
+                jQuery(window).scrollTop() >= jQuery(document).height() -
+                    jQuery(window).height() - 300) {
+                self.loading = true;
+                self.appendItems(self.current_records);
+            }
+        });
+    } else {
+        // handle the minimized view
+        var container = jQuery(self.el).find("div.collection-assets")[0];
+        jQuery(container).scroll(function () { 
+            if (!self.loading &&
+                container.scrollTop + jQuery(container).innerHeight() >= 
+                    container.scrollHeight - 300) {
+                self.loading = true;
+                self.appendItems(self.current_records);
+            }
+        });
+    }
+    
+    jQuery(elt).fadeIn("slow");
+
+    
+    if (self.view_callback) {
+        self.view_callback(the_records.assets.length);
+    }
+    
+    if (self.scrollTop) {
+        jQuery(self.el).find("div.collection-assets").scrollTop(self.scrollTop);
+        self.scrollTop = undefined;
+    }
+
+    jQuery(window).trigger("resize");
     //debugger;
     /*Mustache.update(self.template_label, the_records, {
         parent: self.parent,
