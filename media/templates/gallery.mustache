@@ -25,7 +25,7 @@
             <h5>How do I build my collection?</h5>
             <div class="feature-help-instructions">
                 <ul>
-                    {{#is_faculty?}}
+                    {{#is_faculty}}
                         <li style="margin-bottom: 4px"><b>Import</b>: Build your collection by 
                         bookmarking items from sites such as YouTube or Flickr.
                         To install the bookmarklet into your browser, click the <b>Import into Collection</b> link 
@@ -37,7 +37,7 @@
                             into Mediathread when you enable this feature in <b>Tools</b> menu / <b>Manage Sources</b>.
                             An <b>Upload from Computer</b> link and directions then appear on the <a href="/">home</a> page.  
                         </li>
-                    {{/is_faculty?}}
+                    {{/is_faculty}}
                     {{^is_faculty}}                                            
                             <li style="margin-bottom: 4px"><b>Import</b>: Build your collection 
                             by bookmarking items from sites such as YouTube or Flickr.
@@ -65,11 +65,11 @@
                 <a class="switcher-top menuclosed" onclick="return switcher(event, this);">
                     <span class="switcher-prefix">Owner </span>
                     <span class="down-arrow"></span>
-                    <span class="title">{{{selected_label?ellipses(18)}}}</span>
+                    <span class="title">{{{selected_label.ellipses(18)}}}</span>
                 </a>
                 
                 <ul class="switcher-options">                    
-                    {{#display_switcher_extras?}}
+                    {{#display_switcher_extras}}
                         {{^showing_my_items}}
                             <li class="choice_my_items">
                                 <a class="switcher-choice owner" href="{{space_viewer.username}}" style="font-weight: bold">Me</a>
@@ -81,7 +81,7 @@
                                 <li><a class="switcher-choice owner" href="{{username}}" style="font-weight: bold">{{public_name}}</a></li>
                             {{/is_viewer}}   
                         {{/project.participants}}
-                    {{/display_switcher_extras?}}                        
+                    {{/display_switcher_extras}}
                     {{^showing_all_items}}
                         <li class="choice_all_items">
                             <a class="switcher-choice owner" href="all-class-members" style="font-weight: bold">All Class Members</a>
@@ -99,9 +99,9 @@
                     <span class="switcher-prefix">Date </span>
                     <span class="down-arrow"></span>
                     
-                    {{#active_filters.modified?}}
+                    {{#active_filters.modified}}
                         <span class="title">{{active_filters.modified}}</span>
-                    {{/active_filters.modified?}}
+                    {{/active_filters.modified}}
                     
                     {{^active_filters.modified}}
                         <span class="title">all</span>
@@ -131,7 +131,7 @@
             <div>
                 <span class="concept-prefix" title="{{display_name}}">{{display_name}}</span>                
                 <select class="vocabulary" name="vocabulary-{{id}}"
-                    data-placeholder="Select {{display_name?lower()}}" multiple="multiple">
+                    data-placeholder="Select {{display_name.lower()}}" multiple="multiple">
                     {{#term_set}}
                         <option value="{{id}}">{{display_name}}</option>
                     {{/term_set}}
@@ -147,7 +147,7 @@
                 {{^assets}}
                     <div class="default-content feature-help">
                         {{^active_filter_count}}
-                            {{#showing_my_items?}}
+                            {{#showing_my_items}}
                                 <div class="intro-text">
                                 You have not collected any materials.<br /><br />
                                 
@@ -166,7 +166,7 @@
                                 <h5>How do I build my collection?</h5>
                                 <div>
                                     <ul>
-                                        {{#is_faculty?}}
+                                        {{#is_faculty}}
                                             <li style="margin-bottom: 4px"><b>Import</b>: Build your collection by 
                                             bookmarking items from sites such as YouTube or Flickr.
                                             To install the bookmarklet into your browser, click the <b>Import into Collection</b> link 
@@ -178,7 +178,7 @@
                                                 into Mediathread when you enable this feature in <b>Tools</b> menu / <b>Manage Sources</b>.
                                                 An <b>Upload from Computer</b> link and directions then appear on the <a href="/">home</a> page.  
                                             </li>
-                                        {{/is_faculty?}}
+                                        {{/is_faculty}}
                                         {{^is_faculty}}                                            
                                                 <li style="margin-bottom: 4px"><b>Import</b>: Build your collection 
                                                 by bookmarking items from sites such as YouTube or Flickr.
@@ -193,11 +193,11 @@
                                    </ul>                                     
                                 </div>
                                 </div>                                                               
-                            {{/showing_my_items?}}
+                            {{/showing_my_items}}
                             {{^showing_my_items}}
-                                {{#showing_all_items?}}
+                                {{#showing_all_items}}
                                     This class currently has no materials.
-                                {{/showing_all_items?}}                            
+                                {{/showing_all_items}}                            
                                 {{^showing_all_items}}
                                     {{space_owner.public_name}} has not collected any materials.<br /><br />Please select another owner.
                                 {{/showing_all_items}}                                
@@ -212,11 +212,11 @@
                     <div id="record-{{id}}" class="gallery-item record-{{primary_type}} gallery-item-{{id}} static-height rounded">
                         <h4 id="asset-item-{{id}}" class="asset_title asset-{{primary_type}}">
                             <a class="asset-title-link"
-                               title="{{{title?default(-Untitled-)}}"
+                               title="{{{title.default(-Untitled-)}}"
                                href="{{local_url}}">
-                                    {{#title?}}
-                                        {{{title?ellipses(35)}}}
-                                    {{/title?}}
+                                    {{#title}}
+                                        {{{title.ellipses(35)}}}
+                                    {{/title}}
                                     {{^title}}
                                         -Untitled-
                                     {{/title}}
@@ -228,33 +228,33 @@
                                 {{^thumb}}
                                     <img class="gallery-item-thumb" src="/media/img/nothumb_{{media_type_label}}.png" alt="Item Thumbnail" />
                                 {{/thumb}}
-                                {{#thumb?}}
+                                {{#thumb}}
                                     <img class="gallery-item-thumb" src="{{thumb}}" alt="Item Thumbnail" />
-                                {{/thumb?}}
+                                {{/thumb}}
                             {{/thumbable}}
                         </div>
                         
                         <div>
                             <div class="actions">
-                                {{#editable?}}
+                                {{#editable}}
                                     <a class="collection-choice delete-asset" href="{{id}}" title="Remove item from your collection">
                                         <img src="/media/img/icons/meth_delete.png"  class="delete_icon" alt="Remove item from your collection"  />
                                     </a>
-                                {{/editable?}}
+                                {{/editable}}
                                 
                                 <a class="collection-choice edit-asset-inplace" href="{{local_url}}" title="Edit item attributes">
                                     <img src="/media/img/icons/meth_edit.png" class="edit_icon" alt="Edit item attributes"  />
                                 </a>
                             </div>
                         
-                            {{#annotation_count?}}
+                            {{#annotation_count}}
                                 <div class="item-annotation-count meta">
                                     <span class="metadata-label item-annotation-count-total">{{annotation_count}}</span>
                                     <span class="metadata-value">selections</span>
                                     | <span class="metadata-label item-annotation-count-user">{{my_annotation_count}}</span>
                                       <span class="metadata-value">by me</span>
                                 </div>
-                            {{/annotation_count?}}
+                            {{/annotation_count}}
                             {{^annotation_count}}
                                 <div class="item-annotation-count meta">
                                     <span class="metadata-label item-annotation-count-total">0</span>

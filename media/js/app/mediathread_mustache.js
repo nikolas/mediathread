@@ -3,10 +3,10 @@
     
     ///MUSTACHE CODE
     if (window.Mustache) {
-        Mustache.set_pragma_default('EMBEDDED-PARTIALS', true);
+        /*Mustache.set_pragma_default('EMBEDDED-PARTIALS', true);
         Mustache.set_pragma_default('FILTERS', true);
         Mustache.set_pragma_default('DOT-SEPARATORS', true);
-        Mustache.set_pragma_default('?-CONDITIONAL', true);
+        Mustache.set_pragma_default('?-CONDITIONAL', true);*/
         
         MediaThread.urls = {
             'annotation-form': function (asset_id, annotation_id) {
@@ -109,7 +109,7 @@
             }
         };
 
-        Mustache.Renderer.prototype.filters_supported.url = function (name, context, args) {
+        /*Mustache.Renderer.prototype.filters_supported.url = function (name, context, args) {
             var url_args = this.map(args, function (a) { return this.get_object(a, context, this.context); }, this);
             return MediaThread.urls[name].apply(this, url_args);
         };
@@ -137,7 +137,7 @@
             } else {
                 return args[0];
             }
-        };
+        };*/
     }//END MUSTACHE CODE
 
 })();

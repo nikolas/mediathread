@@ -96,7 +96,7 @@
                                         <br />
                                         <div style="float: right">
                                             <input id="asset-view-show-help"
-                                                type="checkbox" {{#show_help_checked?}}checked="checked"{{/show_help_checked?}} />
+                                                type="checkbox" {{#show_help_checked}}checked="checked"{{/show_help_checked}} />
                                                 Do not show this message again.
                                         </div>
                                         <div class="visualclear"></div>
@@ -120,18 +120,18 @@
                                         <div id="asset-view-details" class="asset-view-details">
                                             {{#>>asset-global-annotation}}
                                             <div id="asset-global-annotation"
-                                                {{#annotation.editing?}}
+                                                {{#annotation.editing}}
                                                     style="display: none"
-                                                {{/annotation.editing?}}>
+                                                {{/annotation.editing}}>
                                                 
                                                 {{#asset-current}}
                                                     <h2>Item
                                                         <div class="actions">
-                                                            {{#global_annotation.id?}}     
+                                                            {{#global_annotation.id}}     
                                                             <input type="image" title="Remove item from collection" 
                                                                 onclick="return AnnotationList.deleteItem(event, this, {{id}});" 
                                                                 alt="Delete" src="/media/img/icons/meth_delete.png" />
-                                                            {{/global_annotation.id?}}                                                           
+                                                            {{/global_annotation.id}}
                                                             
                                                             <input type="image" title="Edit item" 
                                                                onclick="return AnnotationList.editItem(this);" 
@@ -142,11 +142,11 @@
                                                     <div id="asset-header">
                                                         <table>
                                                             <tr>
-                                                                {{#thumb_url?}} 
+                                                                {{#thumb_url}} 
                                                                     <td class="thumbnail">
                                                                        <img src="{{thumb_url}}" alt="Item Thumbnail" />
                                                                     </td>
-                                                                {{/thumb_url?}}
+                                                                {{/thumb_url}}
                                                                 <td>
                                                                     <div class="global-annotation-analysis">     
                                                                     {{^global_annotation_analysis}}
@@ -162,28 +162,28 @@
                                                                        </center>
                                                                     {{/global_annotation_analysis}}
                                                                     
-                                                                    {{#global_annotation.metadata.body?}}
+                                                                    {{#global_annotation.metadata.body}}
                                                                         <div class="meta">
                                                                             <label>Notes</label>
                                                                             <div class="global-annotation-notes">
                                                                                 {{global_annotation.metadata.body}}
                                                                             </div>
                                                                         </div>
-                                                                    {{/global_annotation.metadata.body?}}
+                                                                    {{/global_annotation.metadata.body}}
                                                                 </td>
                                                             </tr>
                                                         </table>
                                                         
-                                                        {{#global_annotation.metadata.tags?}}
+                                                        {{#global_annotation.metadata.tags}}
                                                         <div class="meta global-annotation-tags">
                                                             <label>Tags: </label>
                                                             {{#global_annotation.metadata.tags}}
                                                                 {{name}}{{^last}}, {{/last}}
                                                             {{/global_annotation.metadata.tags}}
                                                         </div>
-                                                        {{/global_annotation.metadata.tags?}}
+                                                        {{/global_annotation.metadata.tags}}
                                                         
-                                                        {{#global_annotation.vocabulary?}}
+                                                        {{#global_annotation.vocabulary}}
                                                             {{#global_annotation.vocabulary}}
                                                                 <div class="meta">
                                                                     <label>{{display_name}}: </label>
@@ -192,14 +192,14 @@
                                                                     {{/terms}}
                                                                 </div>
                                                             {{/global_annotation.vocabulary}}
-                                                        {{/global_annotation.vocabulary?}}
+                                                        {{/global_annotation.vocabulary}}
                                                     </div>
                                                 {{/asset-current}}
                                                 
                                                 <form id="edit-global-annotation-form" method="post"
-                                                    {{#asset-current.global_annotation.id?}}
+                                                    {{#asset-current.global_annotation.id}}
                                                     action="/asset/save/{{asset-current.id}}/annotations/{{asset-current.global_annotation.id}}/"
-                                                    {{/asset-current.global_annotation.id?}}
+                                                    {{/asset-current.global_annotation.id}}
                                                     
                                                     {{^asset-current.global_annotation.id}}
                                                         action="/asset/create/{{asset-current.id}}/global/"
@@ -207,7 +207,7 @@
                                                     
                                                     style="display: none">
                                                     
-                                                    {{#asset-current.editable_title?}}
+                                                    {{#asset-current.editable_title}}
                                                         <div>
                                                             <label>Title</label>
                                                             <div>
@@ -215,7 +215,7 @@
                                                                     value="{{asset-current.title}}"/>                                                                
                                                             </div>                                                            
                                                         </div>
-                                                    {{/asset-current.editable_title?}}
+                                                    {{/asset-current.editable_title}}
                                                     
                                                     {{#vocabulary}}
                                                     <div>
@@ -223,7 +223,7 @@
                                                         <div>
                                                             <select class="vocabulary"
                                                                 name="vocabulary-{{id}}"
-                                                                data-placeholder="select {{display_name?lower()}}"
+                                                                data-placeholder="select {{display_name.lower()}}"
                                                                 multiple="multiple">
                                                                 {{#term_set}}
                                                                     <option value="{{id}}">{{display_name}}</option>
@@ -273,9 +273,9 @@
                                             {{#>>annotation-current}}
                                                 <div id="annotation-current">
                                                     <div id="asset-details-annotations-current"
-                                                        {{#annotation.editing?}}
+                                                        {{#annotation.editing}}
                                                             style="display: block"
-                                                        {{/annotation.editing?}}
+                                                        {{/annotation.editing}}
                                                         
                                                         {{^annotation.editing}}
                                                             style="display: none"
@@ -286,9 +286,9 @@
                                                         <div id="original-annotation" class="annotation-data" 
                                                              data-begin="{{range1}}" 
                                                              data-end="{{range2}}"
-                                                             {{#annotation_data?}}
+                                                             {{#annotation_data}}
                                                                 data-annotation="{{annotation_data}}"
-                                                             {{/annotation_data?}}
+                                                             {{/annotation_data}}
                                                              {{^annotation_data}}
                                                                 data-annotation="{}"
                                                              {{/annotation_data}}> 
@@ -301,13 +301,13 @@
                                                         </div>                                                        
                                                     
                                                         <h2>
-                                                            {{#id?}}
+                                                            {{#id}}
                                                                 Edit Selection
-                                                            {{/id?}}
+                                                            {{/id}}
                                                             {{^id}}
-                                                                {{#copying?}}
+                                                                {{#copying}}
                                                                     Copy Selection
-                                                                {{/copying?}}
+                                                                {{/copying}}
                                                                 {{^copying}}
                                                                     Create Selection
                                                                 {{/copying}}
@@ -329,7 +329,7 @@
                                                                     <div class="vocabulary">
                                                                         <label>{{display_name}}</label>
                                                                         <select class="vocabulary"
-                                                                            data-placeholder="select {{display_name?lower()}}"
+                                                                            data-placeholder="select {{display_name.lower()}}"
                                                                             name="vocabulary-{{id}}"
                                                                             multiple="multiple">
                                                                             {{#term_set}}
@@ -363,9 +363,9 @@
                                                                 <input class="btn-primary right" type="button" name="Cancel" value="Cancel" 
                                                                     onclick="javascript:AnnotationList.cancelAnnotation()" />
                                                                 
-                                                                {{#id?}} <!-- Editing existing annotation -->
+                                                                {{#id}} <!-- Editing existing annotation -->
                                                                 <input type="hidden" name="annotation-id" value="{{id}}" />
-                                                                {{/id?}}
+                                                                {{/id}}
                                                                 {{/annotation}}
                                                                 
                                                                 <div class="visualclear"></div>
@@ -377,13 +377,13 @@
                                         
                                             <div id="annotations-organized-container">
                                                 <div id="annotations-organized"
-                                                    {{#annotation.editing?}}
+                                                    {{#annotation.editing}}
                                                         style="display: none"
-                                                    {{/annotation.editing?}}>
+                                                    {{/annotation.editing}}>
 
                                                          
                                                     {{#asset-current}}
-                                                        {{#annotations?}}
+                                                        {{#annotations}}
                                                             
                                                             <a class="btn-primary create-selection right"
                                                                title="Create Selection" 
@@ -414,7 +414,7 @@
                                                                 </form>                                                        
                                                             </div>
 
-                                                        {{/annotations?}}
+                                                        {{/annotations}}
                                                         <h2>
                                                             Selections
                                                         </h2>                  
@@ -433,7 +433,7 @@
                                                            </center>                                                    
                                                         {{/annotations}}
                                                                
-                                                        {{#annotations?}}
+                                                        {{#annotations}}
                                                             <a style="display: none"
                                                                 class="btn-primary create-selection"
                                                                 onclick="return AnnotationList.newAnnotation();">
@@ -441,7 +441,7 @@
                                                                     alt="Create Selection"></img>
                                                                 Create Selection
                                                             </a>                                                                
-                                                        {{/annotations?}}
+                                                        {{/annotations}}
                                                     {{/asset-current}}
                                                   
                                                     {{#>>annotation-list}}
@@ -458,12 +458,12 @@
                                                                                 {{^metadata.title}}
                                                                                     -Untitled-
                                                                                 {{/metadata.title}}
-                                                                                {{#metadata.title?}}
-                                                                                    {{metadata.title?ellipses(30)}}
-                                                                                {{/metadata.title?}}
+                                                                                {{#metadata.title}}
+                                                                                    {{metadata.titleellipses(30)}}
+                                                                                {{/metadata.title}}
                                                                              </a>
                                                                              
-                                                                             {{#editable?}}
+                                                                             {{#editable}}
                                                                                  <input style="display: none" type="image" title="Edit Selection" 
                                                                                      onclick="return AnnotationList.editAnnotation(this);" 
                                                                                      alt="Edit" src="/media/img/icons/meth_edit.png" 
@@ -472,7 +472,7 @@
                                                                                     onclick="return AnnotationList.deleteAnnotation(event, this, {{id}});" 
                                                                                     alt="Delete" src="/media/img/icons/meth_delete.png" 
                                                                                     class="annotation-listitem-icon delete" />
-                                                                             {{/editable?}}
+                                                                             {{/editable}}
                                                         
                                                                              {{^editable}}
                                                                                  <input style="display: none" type="image" title="Copy Selection" 
@@ -484,7 +484,7 @@
                                                                          <div>
                                                                             <div id="annotation-body-{{id}}">
                                                                                 <div class="meta">
-                                                                                    {{#annotation.startCode?}}
+                                                                                    {{#annotation.startCode}}
                                                                                         <div id="clipform-tools" class="annotation-timecode">
                                                                                             <div class="left">
                                                                                             <label for="">Time code:</label>
@@ -497,12 +497,12 @@
                                                                                                 src="/media/img/icons/meth_video_play.png" />
                                                                                         </div>
                                                                                         <div class="visualclear"></div>
-                                                                                    {{/annotation.startCode?}}
-                                                                                    <div><label for="">Author:</label> <a href="{{home-space?url(author.username)}}">{{author.public_name}}</a></div>                                                                                    
-                                                                                    {{#metadata.tags?}}<div><label for="">Tags:</label> {{#metadata.tags}}{{name}}{{^last}}, {{/last}}{{/metadata.tags}}</div>{{/metadata.tags?}}
-                                                                                    {{#metadata.body?}}<div><label for="">Note:</label> {{metadata.body}}</div>{{/metadata.body?}}
+                                                                                    {{/annotation.startCode}}
+                                                                                    <div><label for="">Author:</label> <a href="{{home-space.url(author.username)}}">{{author.public_name}}</a></div>
+                                                                                    {{#metadata.tags}}<div><label for="">Tags:</label> {{#metadata.tags}}{{name}}{{^last}}, {{/last}}{{/metadata.tags}}</div>{{/metadata.tags}}
+                                                                                    {{#metadata.body}}<div><label for="">Note:</label> {{metadata.body}}</div>{{/metadata.body}}
                                                                                     
-                                                                                    {{#vocabulary?}}
+                                                                                    {{#vocabulary}}
                                                                                         {{#vocabulary}}
                                                                                             <div>
                                                                                                 <label>{{display_name}}: </label>
@@ -511,7 +511,7 @@
                                                                                                 {{/terms}}
                                                                                             </div>
                                                                                         {{/vocabulary}}
-                                                                                    {{/vocabulary?}}
+                                                                                    {{/vocabulary}}
                                                                                 </div>
                                                                             </div>
                                                                          </div>
@@ -536,9 +536,9 @@
                                                 <h2>Sources</h2>
                                                 {{#asset-current}}
                                                     <h4>Item's Original Source:</h4> 
-                                                    <a href="{{sources.url.url}}">{{sources.url.url?ellipses(50)}}</a>
+                                                    <a href="{{sources.url.url}}">{{sources.url.url.ellipses(50)}}</a>
                                                     
-                                                    {{#sources.xmeml?}}
+                                                    {{#sources.xmeml}}
                                                         <h4 class="metadata-title">Final Cut Pro</h4>
                                                         <dl>
                                                             <dd>
@@ -555,7 +555,7 @@
                                                                 </div>  
                                                             </dd>
                                                         </dl>    
-                                                    {{/sources.xmeml?}}
+                                                    {{/sources.xmeml}}
                                                     
                                                     {{#metadata}}
                                                         <h4>{{key}}</h4>
@@ -571,7 +571,7 @@
                                     <div id="tabs-3" class="ui-tab-asset-references">
                                         {{#>>asset-references}}
                                             <div id="asset-references">
-                                                {{#tags?}}
+                                                {{#tags}}
                                                     <h2>Tags</h2>
                                                     <div>
                                                         <span>
@@ -583,7 +583,7 @@
                                                     </div>
                                                     <br />
                                                     <br />
-                                                {{/tags?}}
+                                                {{/tags}}
                                                 {{#vocabulary}}
                                                     <h2>{{display_name}}</h2>
                                                     <div>
@@ -600,11 +600,10 @@
                                                 <br />                                                
                                                 {{/vocabulary}}
 
-                                                
-                                                {{#references?}}                                                
+                                                {{#references}}
                                                     <h2>Class References</h2>
                                                     <ul class="clumper">
-                                                    {{#references}}    
+                                                    {{#references}}
                                                         <li>
                                                             <div class="asset_title type-{{type}}">
                                                                 <a href="{{url}}" class="title">{{title}}</a>
@@ -620,7 +619,7 @@
                                                         </li>                                            
                                                     {{/references}}
                                                     </ul>
-                                                {{/references?}}
+                                                {{/references}}
                                             </div>
                                         {{/>>asset-references}}
                                     </div> {{! end tabs-3 references }}
