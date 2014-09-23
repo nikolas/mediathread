@@ -551,9 +551,10 @@
                             'asset-current': self.active_asset,
                             'vocabulary': self.vocabulary
                         };
-                        
+
+                        console.log('mustache.update 1');
                         //Mustache.update("asset-view-header", context);
-                         
+
                         /*Mustache.update("asset-global-annotation", context, {
                             pre: function (elt) { jQuery(elt).hide(); },
                             post: function (elt) {
@@ -663,6 +664,7 @@
                     jQuery("select.vocabulary").select2({});
                     jQuery("#asset-details-annotations-current").fadeIn();
                     jQuery(window).trigger("resize");
+                    console.log('mustache.update 2');
                     /*Mustache.update('annotation-current', context, { post: function (elt) {
                         djangosherd.assetview.clipform.html.push('clipform-display', {
                             asset : {}
